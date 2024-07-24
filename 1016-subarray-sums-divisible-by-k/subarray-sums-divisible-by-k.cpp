@@ -6,8 +6,7 @@ public:
         int sum = 0, ans = 0;
         for(int i = 0; i < nums.size(); i++) {
             sum += nums[i];
-            while(sum < 0) sum += k;
-            int temp = sum % k;
+            int temp = (sum % k + k) % k;
             ans += mp[temp];
             mp[temp]++;
         }
