@@ -12,14 +12,11 @@
 class Solution {
 public:
     void solve(TreeNode* root, vector<int> &temp, vector<vector<int>> &ans) {
-        if(root == NULL) {
-            ans.push_back(temp);
-            return;
-        }
-
+        if(root == NULL) return;
         temp.push_back(root -> val);
-        if(!root -> left) solve(root -> right, temp, ans);
-        else if(!root -> right) solve(root -> left, temp, ans);
+        if(!root -> left && !root -> right) {
+            ans.push_back(temp);
+        }
         else {
             solve(root -> left, temp, ans);
             solve(root -> right, temp, ans);
