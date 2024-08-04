@@ -12,7 +12,7 @@
 class Solution {
 public:
     int ans = 0;
-    void solve(TreeNode* root) {
+    void solve(TreeNode* &root) {
         if(root == NULL) return;
         if(root -> left && root -> left -> left == NULL && root -> left -> right == NULL) {
             ans += root -> left -> val;
