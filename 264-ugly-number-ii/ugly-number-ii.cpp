@@ -2,18 +2,15 @@ class Solution {
 public:
     int nthUglyNumber(int n) {
         vector<long long> dp(n + 1, INT_MAX);
-        dp[0] = 1;
-        dp[1] = 1;
-        int no[3] = {2, 3, 5};
+        dp[0] = dp[1] = 1;
+        int cnt2 = 1, cnt3 = 1, cnt5 = 1;
         for(int i = 2; i <= n; i++) {
-            for(int j = 0; j < i; j++) {
-                for(int k = 0; k < 3; k++) {
-                    long long key = no[k]*dp[j];
-                    if(key > dp[i - 1]) dp[i] = min(dp[i], key);
-                }
-            }
+            int temp = min(dp[cnt2]*2, min(dp[cnt3]*3, dp[cnt5]*5));
+            if(temp == dp[cnt2]*2) cnt2++;
+            if(temp == dp[cnt3]*3) cnt3++;
+            if(temp == dp[cnt5]*5) cnt5++;
+            dp[i] = temp;
         }
-
-        return (int)dp[n];
+        return dp[n];
     }
 };
