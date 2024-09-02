@@ -2,9 +2,7 @@ class Solution {
 public:
     int chalkReplacer(vector<int>& chalk, int b) {
         long long n = chalk.size(), key = accumulate(chalk.begin(), chalk.end(), 0LL), k = b, ans = -1;
-        while(k >= key) {
-            k -= key;
-        }
+        k = k % key;
         key = 0;
         for(int i = 0; i < n; i++) {
             key += chalk[i];
