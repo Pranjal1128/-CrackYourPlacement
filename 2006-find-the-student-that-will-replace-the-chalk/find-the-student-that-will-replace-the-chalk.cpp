@@ -1,16 +1,14 @@
 class Solution {
 public:
     int chalkReplacer(vector<int>& chalk, int b) {
-        long long n = chalk.size() , ans = -1, k = b;
-        vector<long long> v(n + 1, 0);
-        for(int i = 0; i < n; i++) {
-            v[i + 1] = chalk[i] + v[i];
+        long long n = chalk.size(), key = accumulate(chalk.begin(), chalk.end(), 0LL), k = b, ans = -1;
+        while(k >= key) {
+            k -= key;
         }
-        while(k >= v[n]) {
-            k -= v[n];
-        }
+        key = 0;
         for(int i = 0; i < n; i++) {
-            if(v[i + 1] > k) {
+            key += chalk[i];
+            if(key > k) {
                 ans = i;
                 break;
             }
