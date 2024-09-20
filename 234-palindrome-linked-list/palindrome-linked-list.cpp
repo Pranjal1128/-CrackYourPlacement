@@ -36,7 +36,7 @@ public:
         }
 
         slow = reve(slow);
-        while(slow != NULL && head != NULL) {
+        while(slow != NULL) {
             if(head -> val != slow -> val) return false;
             head = head -> next;
             slow = slow -> next;
