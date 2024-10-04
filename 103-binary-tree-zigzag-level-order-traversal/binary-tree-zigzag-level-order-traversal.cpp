@@ -16,8 +16,7 @@ public:
         vector<vector<int>> ans;
         queue<TreeNode*> q;
         q.push(root);
-        ans.push_back({root -> val});
-        bool zig = 0;
+        bool zig = 1;
         while(!q.empty()) {
             int n = q.size();
             vector<int> temp;
@@ -28,14 +27,14 @@ public:
 
                 if(f -> left) {
                     q.push(f -> left);
-                    temp.push_back(f -> left -> val);
                 } 
                 if(f -> right) {
                     q.push(f -> right);
-                    temp.push_back(f -> right -> val);
                 }
+
+                temp.push_back(f -> val);                
             }
-            if(temp.size() == 0) break;
+
             if(zig) {
                 reverse(temp.begin(), temp.end());
                 ans.push_back(temp);
