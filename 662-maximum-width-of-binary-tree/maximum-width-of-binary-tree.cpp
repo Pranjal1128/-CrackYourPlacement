@@ -27,9 +27,6 @@ public:
                 q.pop();
                 TreeNode* f = p.first;
                 int pos = p.second;
-                maxi = max(maxi, pos);
-                mini = min(mini, pos);
-
                 if(f -> left) q.push({f -> left, 2LL*pos + 1});
                 if(f -> right) q.push({f -> right, 2LL*pos + 2});
             }
